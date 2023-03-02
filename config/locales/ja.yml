@@ -198,3 +198,7 @@ ja:
   editing_book_page:
     editing_book: "書籍編集"
     update_book: "更新する"
+  notice:
+    success_create: '作成が完了しました。'
+    success_edit: '更新が完了しました。'
+    success_destroy: '削除が完了しました。'
