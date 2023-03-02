@@ -57,6 +57,11 @@ class BooksController < ApplicationController
     end
   end
 
+  def change_locale
+    I18n.default_locale = I18n.default_locale == :en ? :ja : :en
+    redirect_to request.referer
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

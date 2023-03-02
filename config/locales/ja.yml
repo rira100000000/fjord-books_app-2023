@@ -188,6 +188,7 @@ ja:
   new_book: "新規作成"
   show_this_book: "この書籍を見る"
   back_to_books: "書籍一覧に戻る"
+  change_locale: "English"
   index_page:
     books: "書籍一覧"
   new_book_page:

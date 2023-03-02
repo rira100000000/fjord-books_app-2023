@@ -11,6 +11,7 @@
   </head>
 
   <body class="<%= params[:action] %>">
+    <p><%= link_to t('change_locale'), change_locale_path %></p>
     <%= yield %>
   </body>
 </html>

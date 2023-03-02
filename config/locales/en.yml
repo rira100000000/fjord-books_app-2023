@@ -222,6 +222,7 @@ en:
   new_book: "New book"
   show_this_book: "Show this book"
   back_to_books: "Back to books"
+  change_locale: "日本語"
   index_page:
     books: "Books"
   new_book_page:
