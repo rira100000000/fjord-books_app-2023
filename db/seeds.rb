@@ -12,12 +12,14 @@ end
 
 Book.destroy_all
 
-Book.create!(
-  title: 'Ruby超入門',
-  memo: 'Rubyの文法の基本をやさしくていねいに解説しています。',
-  author: '五十嵐 邦明',
-  picture: picture_file('cho-nyumon.jpg')
-)
+20.times do |n|
+  Book.create!(
+    title: "Ruby超入門-#{n + 1}",
+    memo: 'Rubyの文法の基本をやさしくていねいに解説しています。',
+    author: '五十嵐 邦明',
+    picture: picture_file('cho-nyumon.jpg')
+  )
+end
 
 Book.create!(
   title: 'チェリー本',
