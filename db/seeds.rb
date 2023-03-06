@@ -47,7 +47,7 @@ end
     email: Faker::Internet.email,
     password: 'password',
     zip_code: Faker::Address.zip_code,
-    address: Faker::Address.street_address,
+    address: "#{Faker::Address.country} #{Faker::Address.city} #{Faker::Address.building_number}",
     introduction: 'こんにちは、よろしく。'
   )
 end
