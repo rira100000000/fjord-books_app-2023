@@ -194,6 +194,31 @@ ja:
       title_edit: "%{name}の編集"
       error: エラー
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
+      Books: '書籍一覧'
+      Logged_in_as_left: ""
+      Logged_in_as_right: "としてログイン中"
+      Users: "ユーザー一覧"
+      Edit_profile: "プロフィール編集"
+      Logout: "ログアウト"
+      Sign_up: "サインアップ"
+      Login: "ログイン"
+      characters_minimum: "文字以上で設定してください"
+      Forgot_your_password?: "パスワードをお忘れですか?"
+      Didn't_receive_confirmation_instructions?: "確認の案内が届きませんか？"
+      Didn't receive unlock instructions?: "ロック解除の案内が届きませんか？"
+      edit_user: "ユーザー編集"
+      leave_blank_if_you_don't_want_to_change_it: "変更しない場合記入しないでください"
+      we_need_your_current_password_to_confirm_your_changes: "変更を確定するのに現在のパスワードが必要です"
+      zipcode: "郵便番号"
+      address: "住所"
+      email: "Eメール"
+      introduction: "自己紹介"
+      Update: "更新する"
+      Cancel_my_account: "退会する"
+      Unhappy?: "ご不満でしたか？"
+      Are_you_sure?: "本当に退会しますか？"
+      Back: "戻る"
+
     pagination:
       first: '« 最初'
       last: '最後 »'
