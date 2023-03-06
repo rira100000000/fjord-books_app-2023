@@ -20,7 +20,6 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-
   test 'should get new' do
     sign_in users(:user1)
     get new_book_url
