@@ -11,8 +11,6 @@ class User < ApplicationRecord
 
     allowed_types = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
 
-    unless avatar.blob.content_type.in?(allowed_types)
-      errors.add(:avatar, 'はjpeg、jpg、png、gif形式のみ許可されています')
-    end
+    return errors.add(:avatar, 'はjpeg、jpg、png、gif形式のみ許可されています') if avatar.blob.content_type.in?(allowed_types)
   end
 end
