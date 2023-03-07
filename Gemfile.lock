@@ -316,6 +316,7 @@ DEPENDENCIES
   erb_lint
   faker
   i18n_generators
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   kaminari
@@ -324,6 +325,7 @@ DEPENDENCIES
   rails (~> 7.0.4)
   rubocop-fjord
   rubocop-rails
+  ruby-vips (~> 2.1, >= 2.1.4)
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)

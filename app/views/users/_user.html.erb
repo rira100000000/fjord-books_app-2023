@@ -1,5 +1,5 @@
 <div id="<%= dom_id user %>">
-
+  <%= image_tag user.avatar.variant(resize_to_fill: [110, 110]), id: "avatar" if user.avatar.present? %>
   <p>
     <strong><%= User.human_attribute_name(:email) %>:</strong>
     <%= user.email %>
