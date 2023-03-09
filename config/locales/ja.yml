@@ -197,7 +197,7 @@ ja:
     pagination:
       previous: "前ページへ"
       next: "次ページへ"
-      truncate: "..."
+      truncate: "…"
       first: "最初へ"
       last: "最後へ"
   controllers:
