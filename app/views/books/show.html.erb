@@ -2,6 +2,10 @@
 
 <div class="show-item">
   <%= render @book %>
+  <% unless @report.comments.empty? %>
+    <%= render 'comments/comments', commentable: @book, comments: @book.comments %>
+  <% end %>
+  <%= render 'comments/form', commentable: @book, comment: @comment %>
 </div>
 
 <nav class="page-nav">
