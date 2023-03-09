@@ -1,4 +1,5 @@
 <p style="color: green"><%= notice %></p>
+<h1><%= t('.title') %></h1>
 
 <div class="show-item">
   <%= render @book %>
@@ -6,7 +7,7 @@
 
 <nav class="page-nav">
   <%= link_to t('views.common.edit', name: Book.model_name.human), edit_book_path(@book) %> |
-  <%= link_to t('views.common.back', name: Book.model_name.human), books_path %>
+  <%= link_to t('views.common.back', name: Book.model_name.human(count: 2)), books_path %>
 
   <%= button_to t('views.common.destroy', name: Book.model_name.human), @book, method: :delete %>
 </nav>
