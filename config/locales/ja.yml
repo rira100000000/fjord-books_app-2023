@@ -2,7 +2,15 @@
 ja:
   activerecord:
     models:
-      book: 書籍
+      book:
+        one: '書籍'
+        other: '書籍'
+    attributes:
+      book:
+        title: "タイトル"
+        memo: "メモ"
+        author: "作成者"
+        picture: "画像"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -183,11 +191,6 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-  books:
-    title: "タイトル"
-    memo: "メモ"
-    author: "作成者"
-    picture: "画像"
   views:
     common:
       new: "%{name}新規作成"

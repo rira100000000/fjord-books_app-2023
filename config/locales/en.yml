@@ -2,7 +2,15 @@
 en:
   activerecord:
     models:
-      book: book
+      book: 
+        one: 'book'
+        other: 'books'
+    attributes:
+      book:
+        title: "Title"
+        memo: "Memo"
+        author: "Author"
+        picture: "Picture"
     errors:
       messages:
         record_invalid: 'Validation failed: %{errors}'
@@ -217,22 +225,17 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
-  books:
-    title: "Title"
-    memo: "Memo"
-    author: "Author"
-    picture: "Picture"
   views:
     common:
       new: "New %{name}"
       show: "Show this %{name}"
       back: "Back to %{name}"
-      index: "Books"
-      create: "Create book"
+      index: "%{name}"
+      create: "Create %{name}"
       edit: "Edit this %{name}"
       destroy: "Destroy this %{name}"
-      editing: "Editing book"
-      update: "Update Book"
+      editing: "Editing %{name}"
+      update: "Update %{name}"
     header:
       change_locale: "日本語"
   controller:
