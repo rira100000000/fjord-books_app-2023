@@ -58,7 +58,9 @@ class BooksController < ApplicationController
   end
 
   def change_locale
-    I18n.default_locale = I18n.default_locale == :en ? :ja : :en
+    I18n.locale = I18n.locale == :en ? :ja : :en
+    cookies[:language] = I18n.locale.to_s
+
     redirect_to request.referer
   end
 
