@@ -1,5 +1,5 @@
 <p style="color: green"><%= notice %></p>
-<h1><%= t('.title') %></h1>
+<h1><%= t('views.common.showing', name: @book.model_name.human) %></h1>
 
 <div class="show-item">
   <%= render @book %>

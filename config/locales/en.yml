@@ -225,15 +225,6 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
-  books:
-    new:
-      title: 'New book'
-    index:
-      title: 'Books'
-    edit:
-      title: 'Edit book'
-    show:
-      title: 'Book'
   views:
     common:
       new: "New %{name}"
@@ -244,6 +235,7 @@ en:
       edit: "Edit this %{name}"
       destroy: "Destroy this %{name}"
       editing: "Editing %{name}"
+      showing: "%{name} details"
       update: "Update %{name}"
     header:
       change_locale: "日本語"

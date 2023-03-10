@@ -191,15 +191,6 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-  books:
-    new:
-      title: '新規作成'
-    index:
-      title: '書籍一覧'
-    edit:
-      title: '編集'
-    show:
-      title: '詳細表示'
   views:
     common:
       new: "%{name}新規作成"
@@ -210,6 +201,7 @@ ja:
       edit: "編集する"
       destroy: "削除する"
       editing: "%{name}編集"
+      showing: "%{name}詳細"
       update: "更新する"  
     header:
       change_locale: "English"
