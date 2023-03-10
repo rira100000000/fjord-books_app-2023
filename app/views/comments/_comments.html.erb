@@ -1,15 +1,15 @@
-<div>
-  <% commentable.comments.each do |comment| %>
-    <p>
-      <%= User.find(comment.user_id).name.empty? ? User.find(comment.user_id).email : User.find(comment.user_id).name %>:
-      <%= comment.updated_at.to_s(:datetime_jp) %>
-      <br>
-      <%= comment.content %>
+<br>
+<strong><%= Comment.model_name.human %></strong>
 
-    </p>
-    <% if comment.user_id ==  current_user.id %>
-      <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), [comment.commentable, comment], method: :delete %>
-      <%= link_to t('views.common.edit', name: Comment.model_name.human.downcase), polymorphic_path([:edit, comment.commentable, comment]) %>
-    <% end %>
+<% commentable.comments.each do |comment| %>
+  <p>
+    <%= User.find(comment.user_id).name.empty? ? User.find(comment.user_id).email : User.find(comment.user_id).name %>:
+    <%= comment.updated_at.to_s(:datetime_jp) %>
+    <br>
+    <%= comment.content %>
+  </p>
+  <% if comment.user_id ==  current_user.id %>
+    <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), [comment.commentable, comment], method: :delete %>
+    <%= link_to t('views.common.edit', name: Comment.model_name.human.downcase), polymorphic_path([:edit, comment.commentable, comment]) %>
   <% end %>
-</div>
+<% end %>
