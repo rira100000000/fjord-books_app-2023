@@ -1,8 +1,8 @@
-<h1>Editing comment</h1>
+<h1><%= t('views.common.title_edit', name: Comment.model_name.human) %></h1>
 
 <%= render 'form', commentable: @commentable, comment: @comment %>
 <br>
 
 <div>
-  <%= link_to "Back", polymorphic_path(@comment.commentable) %>
+  <%= link_to t('views.common.back_detail',name: @comment.commentable.model_name.human), polymorphic_path(@comment.commentable) %>
 </div>

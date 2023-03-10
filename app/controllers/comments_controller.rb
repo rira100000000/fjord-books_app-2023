@@ -8,12 +8,10 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.build(comment_params)
     @comment.user_id = current_user.id
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to request.referer, notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
-      else
-        format.html { redirect_to request.referer, alert: @comment.errors.full_messages }
-      end
+    if @comment.save
+      redirect_to request.referer, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+    else
+      redirect_to request.referer, alert: @comment.errors.full_messages
     end
   end
 
@@ -26,7 +24,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      redirect_to @comment.commentable, notice: 'Report was successfully updated.'
+      redirect_to @comment.commentable, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
     else
       render :edit, status: :unprocessable_entity
     end

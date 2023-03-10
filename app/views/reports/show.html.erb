@@ -9,9 +9,9 @@
   <%= render 'comments/form', commentable: @report, comment: @comment %>
 </div>
 <div>
-  <%= link_to "Edit this report", edit_report_path(@report) if report_author? %>
+  <%= link_to t('views.common.edit', name: Report.model_name.human), edit_report_path(@report) if report_author? %>
   <%= "|" if report_author? %>
-  <%= link_to "Back to reports", reports_path %>
+  <%= link_to t('views.common.back', name: Report.model_name.human), reports_path %>
 
-  <%= button_to "Destroy this report", @report, method: :delete if report_author? %>
+  <%= button_to t('views.common.destroy', name: Report.model_name.human), @report, method: :delete if report_author? %>
 </div>
