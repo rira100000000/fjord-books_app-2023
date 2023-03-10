@@ -1,6 +1,6 @@
 <div>
   <% commentable.comments.each do |comment| %>
-    <p><%= comment.content %></p>
+    <p><%= comment.content %>:<%= User.find(comment.user_id).name %>:<%= comment.updated_at %></p>
     <% if comment.user_id ==  current_user.id %>
       <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), [comment.commentable, comment], method: :delete %>
     <% end %>
