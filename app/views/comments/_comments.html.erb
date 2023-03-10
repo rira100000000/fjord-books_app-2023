@@ -2,7 +2,7 @@
   <% commentable.comments.each do |comment| %>
     <p>
       <%= User.find(comment.user_id).name.empty? ? User.find(comment.user_id).email : User.find(comment.user_id).name %>:
-      <%= comment.updated_at %>
+      <%= comment.updated_at.to_s(:datetime_jp) %>
       <br>
       <%= comment.content %>
 
