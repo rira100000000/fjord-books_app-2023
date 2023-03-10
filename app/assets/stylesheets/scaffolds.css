@@ -319,3 +319,7 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
   background-color: var(--global-primary-c-hover);
 }
+
+.comment_field {
+  margin-top: 10px;
+}
