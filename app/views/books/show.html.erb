@@ -2,7 +2,9 @@
 
 <div class="show-item">
   <%= render @book %>
-  <% unless @book.comments.empty? %>
+  <% if @book.comments.empty? %>
+    <p>コメントはまだありません</p>
+  <% else%>
     <%= render 'comments/comments', commentable: @book, comments: @book.comments %>
   <% end %>
   <%= render 'comments/form', commentable: @book, comment: @comment %>
