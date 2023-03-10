@@ -3,6 +3,7 @@
 class CommentsController < ApplicationController
   before_action :set_commentable, only: %i[create destroy]
   before_action :correct_user, only: [:destroy]
+
   def create
     @comment = @commentable.comments.build(comment_params)
     @comment.user_id = current_user.id
