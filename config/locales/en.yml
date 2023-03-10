@@ -249,6 +249,6 @@ en:
       change_locale: "日本語"
   controller:
     notice:
-      success_create: 'Book was successfully created.'
-      success_edit: 'Book was successfully updated.'
-      success_destroy: 'Book was successfully destroyed.'
+      success_create: '%{name} was successfully created.'
+      success_edit: '%{name} was successfully updated.'
+      success_destroy: '%{name} was successfully destroyed.'
