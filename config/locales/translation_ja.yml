@@ -20,5 +20,6 @@ ja:
         avatar: ユーザ画像
       report:
         title: タイトル
+        date: 投稿日
         content: 内容
 

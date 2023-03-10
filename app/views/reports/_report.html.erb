@@ -5,6 +5,11 @@
   </p>
 
   <p>
+    <strong><%= Report.human_attribute_name(:date) %>:</strong>
+    <%= report.created_at.to_s(:datetime_jp) %>
+  </p>
+
+  <p>
     <strong><%= Report.human_attribute_name(:content) %>:</strong>
     <%= report.content %>
   </p>
