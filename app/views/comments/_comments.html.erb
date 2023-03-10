@@ -2,7 +2,7 @@
   <% commentable.comments.each do |comment| %>
     <p>
       <%= comment.content %>:
-      <%= User.find(comment.user_id).name.empty? ? User.find(comment.user_id).email : User.find(comment.user_id).name%>
+      <%= User.find(comment.user_id).name.empty? ? User.find(comment.user_id).email : User.find(comment.user_id).name %>
       <%= comment.updated_at %>
     </p>
     <% if comment.user_id ==  current_user.id %>

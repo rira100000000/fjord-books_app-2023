@@ -3,7 +3,7 @@
   <%= render @report %>
   <% if @report.comments.empty? %>
     <p>コメントはまだありません</p>
-  <% else%>
+  <% else %>
     <%= render 'comments/comments', commentable: @report, comments: @report.comments %>
   <% end %>
   <%= render 'comments/form', commentable: @report, comment: @comment %>
