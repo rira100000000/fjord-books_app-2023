@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   resources :users, only: %i(index show)
 
   resources :reports do
-    resources :comments, only: %i[create destroy], module: :reports
+    resources :comments, only: %i[create destroy edit update], module: :reports
   end
 
   resources :books do
-    resources :comments, only: %i[create destroy], module: :books
+    resources :comments, only: %i[create destroy edit update], module: :books
   end
 end
