@@ -6,7 +6,7 @@ class ReportsController < ApplicationController
   helper_method :report_author?
   # GET /reports or /reports.json
   def index
-    @reports = Report.all
+    @reports = Report.order(:id).page(params[:page]).per(4)
   end
 
   # GET /reports/1 or /reports/1.json
@@ -31,7 +31,7 @@ class ReportsController < ApplicationController
     if @report.save
       redirect_to report_url(@report), notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
-      render :new, status: :unprocessable_entity 
+      render :new, status: :unprocessable_entity
     end
   end
 
