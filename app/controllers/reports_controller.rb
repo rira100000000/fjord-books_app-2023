@@ -9,6 +9,10 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
+    mention_list = Mention.where(mentioned_report_id: @report.id)
+    @mention_reports = mention_list.map do |mention|
+      Report.find(mention.mention_report_id)
+    end
   end
 
   # GET /reports/new
@@ -20,11 +24,23 @@ class ReportsController < ApplicationController
 
   def create
     @report = current_user.reports.new(report_params)
-
-    if @report.save
-      redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
+    @mention_id_list = @report.content.scan(%r{(?<=http://localhost:3000/reports/)\d+})
+    if @mention_id_list.empty?
+      if @report.save
+        redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
+      else
+        render :new, status: :unprocessable_entity
+      end
     else
-      render :new, status: :unprocessable_entity
+      result = @report.transaction do
+        @report.save!
+        create_mentions(@mention_id_list)
+      end
+      if result
+        redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
@@ -50,5 +66,11 @@ class ReportsController < ApplicationController
 
   def report_params
     params.require(:report).permit(:title, :content)
+  end
+
+  def create_mentions(mention_id_list)
+    mention_id_list.uniq.each do |mention_id|
+      Mention.create(mention_report: @report, mentioned_report: Report.find(mention_id.to_i))
+    end
   end
 end

@@ -1,0 +1,12 @@
+<div class="mentions-container">
+  <strong>この日報への言及:</strong><br>
+
+  <% if @mention_reports.empty? %>
+    まだ言及されていません
+  <% else %>
+    <% @mention_reports.each do |report| %>
+      <%= link_to report.title , report %>からリンクされています:<%= report.updated_at.to_s(:datetime_jp) %>
+      <br>
+    <% end %>
+  <% end %>
+</div>
