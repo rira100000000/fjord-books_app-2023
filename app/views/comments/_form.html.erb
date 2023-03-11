@@ -1,6 +1,6 @@
 <%= form_with model: [@commentable, @comment] do |f| %>
   <div>
-    <%= f.text_field :content, required: true, class: "comment_field"%>
+    <%= f.text_field :content, required: true, class: "comment_field" %>
   </div>
   <div>
     <%= f.submit t('views.common.submit') %>
