@@ -18,4 +18,12 @@ class Report < ApplicationRecord
   def created_on
     created_at.to_date
   end
+
+  def mentioning_reports
+    Mention.where(mention_report_id: id)
+  end
+
+  def mentioned_reports
+    Mention.where(mentioned_report_id: id)
+  end
 end

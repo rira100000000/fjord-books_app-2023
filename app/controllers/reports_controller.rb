@@ -9,7 +9,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
-    mention_list = Mention.where(mentioned_report_id: @report.id)
+    mention_list = @report.mentioned_reports
     @mention_reports = mention_list.map do |mention|
       Report.find(mention.mention_report_id)
     end
