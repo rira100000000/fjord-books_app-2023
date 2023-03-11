@@ -2,8 +2,11 @@
 <strong><%= Comment.model_name.human %></strong>
 
 <% commentable.comments.each do |comment| %>
-  <p>
-    <%= User.find(comment.user_id).name.empty? ? User.find(comment.user_id).email : User.find(comment.user_id).name %>:
+  <p><% if comment.user_id.nil? %>
+      退会したユーザ:
+    <% else %>
+      <%= User.find(comment.user_id).name.empty? ? User.find(comment.user_id).email : User.find(comment.user_id).name %>:
+    <% end %>
     <%= comment.updated_at.to_s(:datetime_jp) %>
     <br>
     <%= comment.content %>
