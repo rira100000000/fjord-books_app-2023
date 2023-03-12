@@ -97,7 +97,9 @@ class ReportsController < ApplicationController
 
   def create_mentions(mention_id_list)
     mention_id_list.uniq.each do |mention_id|
-      Mention.create(mention_report: @report, mentioned_report: Report.find(mention_id.to_i)) unless mention_id.to_i == @report.id
+      if Report.exists?(id: mention_id.to_i) && mention_id.to_i != @report.id
+        Mention.create(mention_report: @report, mentioned_report: Report.find(mention_id.to_i))
+      end
     end
   end
 
