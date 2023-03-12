@@ -4,6 +4,7 @@ require 'uri'
 
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[edit update destroy]
+  helper_method :add_a_tag
 
   def index
     @reports = Report.includes(:user).order(id: :desc).page(params[:page])
