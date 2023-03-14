@@ -13,16 +13,16 @@
   <body class="<%= params[:action] %>">
     <p class="navbar-text pull-right">
       <% if user_signed_in? %>
-        <%= t("views.common.Logged_in_as_left") %>
+        <%= t("views.common.logged_in_as_left") %>
         <strong><%= current_user.email %></strong>
-        <%= t("views.common.Logged_in_as_right") %>
-        <%= link_to t('views.common.Books'), books_path, class: 'navbar-link' %> |
-        <%= link_to t('views.common.Users'), users_path, class: 'navbar-link' %> |
-        <%= link_to t('views.common.Edit_profile'), edit_user_registration_path, class: 'navbar-link' %> |
-        <%= link_to t('views.common.Logout'), destroy_user_session_path, method: :delete, class: 'navbar-link' %>
+        <%= t("views.common.logged_in_as_right") %>
+        <%= link_to t('views.common.books'), books_path, class: 'navbar-link' %> |
+        <%= link_to t('views.common.users'), users_path, class: 'navbar-link' %> |
+        <%= link_to t('views.common.edit_profile'), edit_user_registration_path, class: 'navbar-link' %> |
+        <%= link_to t('views.common.logout'), destroy_user_session_path, method: :delete, class: 'navbar-link' %>
       <% else %>
-        <%= link_to t("views.common.Sign_up"), new_user_registration_path, class: 'navbar-link' %> |
-        <%= link_to t("views.common.Login"), new_user_session_path, class: 'navbar-link' %>
+        <%= link_to t("views.common.sign_up"), new_user_registration_path, class: 'navbar-link' %> |
+        <%= link_to t("views.common.login"), new_user_session_path, class: 'navbar-link' %>
       <% end %>
     </p>
     <%= yield %>
