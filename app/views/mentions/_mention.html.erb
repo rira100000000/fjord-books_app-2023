@@ -1,11 +1,11 @@
 <div class="mentions-container">
-  <strong>この日報への言及:</strong><br>
+  <strong><%= t('views.common.title_mention', name: Report.model_name.human,mention_name: Mention.model_name.human)%>:</strong><br>
 
   <% if @mention_reports.empty? %>
-    まだ言及されていません
+    <%= t('views.common.no_mentions', name: Mention.model_name.human)%>
   <% else %>
     <% @mention_reports.each do |report| %>
-      <%= link_to report.title , report %>からリンクされています:<%= report.updated_at.to_s(:datetime_jp) %>
+      <%= link_to report.title , report %><%= t('views.common.linked') %>:<%= report.updated_at.to_s(:datetime_jp) %>
       <br>
     <% end %>
   <% end %>
