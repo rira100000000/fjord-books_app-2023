@@ -3,11 +3,11 @@
 one:
   user: one
   commentable: one
-  commentable_type: Commentable
+  commentable_type: Report
   content: MyString
 
 two:
   user: two
   commentable: two
-  commentable_type: Commentable
+  commentable_type: Report
   content: MyString
