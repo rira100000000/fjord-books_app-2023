@@ -3,7 +3,6 @@
 class CommentsController < ApplicationController
   before_action :set_commentable, only: %i[create destroy edit update]
   before_action :correct_user, only: %i[destroy edit update]
-  before_action :set_comment, only: %i[destroy edit update]
 
   def create
     @comment = @commentable.comments.build(comment_params)
@@ -37,10 +36,10 @@ class CommentsController < ApplicationController
   end
 
   def correct_user
-    redirect_to(root_path) unless current_user.id == @commentable.comments.find(params[:id]).user_id
-  end
-
-  def set_comment
-    @comment = @commentable.comments.find(params[:id])
+    if current_user.id == @commentable.comments.find(params[:id]).user_id
+      @comment = @commentable.comments.find(params[:id])
+    else
+      redirect_to(root_path)
+    end
   end
 end
