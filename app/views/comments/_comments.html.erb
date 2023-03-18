@@ -7,7 +7,7 @@
     <% else %>
       <%= User.find(comment.user_id).name.empty? ? User.find(comment.user_id).email : User.find(comment.user_id).name %>:
     <% end %>
-    <%= comment.updated_at.to_s(:datetime_jp) %>
+    <%= comment.updated_at.to_fs(:datetime_jp) %>
     <br>
     <%= comment.content %>
   </p>
