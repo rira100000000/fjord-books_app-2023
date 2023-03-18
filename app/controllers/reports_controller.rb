@@ -3,7 +3,6 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
   before_action :correct_user, only: %i[edit update destroy]
-  helper_method :report_author?
   # GET /reports or /reports.json
   def index
     @reports = Report.order(:id).page(params[:page]).per(4)
@@ -64,9 +63,5 @@ class ReportsController < ApplicationController
 
   def correct_user
     redirect_to(root_path) unless current_user.id == @report.user_id
-  end
-
-  def report_author?
-    current_user.id == @report.user_id
   end
 end
