@@ -8,15 +8,15 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_back(fallback_location: root_path, allow_other_host: false, notice: t('controllers.common.notice_create', name: Comment.model_name.human))
+      redirect_back_or_to(root_path, allow_other_host: false, notice: t('controllers.common.notice_create', name: Comment.model_name.human))
     else
-      redirect_back(fallback_location: root_path, allow_other_host: false, alert: @comment.errors.full_messages)
+      redirect_back_or_to(root_path, allow_other_host: false, alert: @comment.errors.full_messages)
     end
   end
 
   def destroy
     @comment.destroy
-    redirect_back(fallback_location: root_path, allow_other_host: false, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human))
+    redirect_back_or_to(root_path, allow_other_host: false, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human))
   end
 
   def edit; end
