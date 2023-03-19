@@ -2,7 +2,7 @@
 
 class CommentsController < ApplicationController
   before_action :set_commentable, only: %i[create destroy edit update]
-  before_action :correct_user, only: %i[destroy edit update]
+  before_action :set_comment, only: %i[destroy edit update]
 
   def create
     @comment = @commentable.comments.build(comment_params)
@@ -35,11 +35,8 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:content)
   end
 
-  def correct_user
-    if current_user.id == @commentable.comments.find(params[:id]).user_id
-      @comment = @commentable.comments.find(params[:id])
-    else
-      redirect_to(root_path)
-    end
+  def set_comment
+    @comment = current_user.comments.find_by(id: params[:id])
+    redirect_to root_path unless @comment
   end
 end
