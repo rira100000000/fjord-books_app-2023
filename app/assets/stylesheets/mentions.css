@@ -1,0 +1,7 @@
+.mention_list ul{
+    padding-left: 0;
+}
+
+.mention_list li{
+    list-style: none;
+}
