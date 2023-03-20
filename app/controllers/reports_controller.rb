@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'uri'
-
+require 'debug'
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[edit update destroy]
 
@@ -23,46 +23,21 @@ class ReportsController < ApplicationController
 
   def create
     @report = current_user.reports.new(report_params)
-    mention_id_list = @report.content.scan(%r{(?<=http://localhost:3000/reports/)\d+})
-    if mention_id_list.empty?
-      if @report.save
-        redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
-      else
-        render :new, status: :unprocessable_entity
-      end
+
+    result = save_report_and_mention(:create)
+    if result
+      redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
-      result = @report.transaction do
-        @report.save!
-        create_mentions(mention_id_list)
-      end
-      if result
-        redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
-      else
-        render :new, status: :unprocessable_entity
-      end
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    mentioning_list = @report.mentioning_reports
-    mention_id_list = report_params[:content].scan(%r{(?<=http://localhost:3000/reports/)\d+})
-    if mentioning_list.empty? && mention_id_list.empty?
-      if @report.update(report_params)
-        redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    result = save_report_and_mention(:update)
+    if result
+      redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
-      result = @report.transaction do
-        @report.update(report_params)
-        destroy_mentions(mentioning_list)
-        create_mentions(mention_id_list)
-      end
-      if result
-        redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
-      else
-        render :edit, status: :unprocessable_entity
-      end
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -92,5 +67,20 @@ class ReportsController < ApplicationController
 
   def destroy_mentions(mentioning_list)
     mentioning_list.each(&:destroy)
+  end
+
+  def save_report_and_mention(control)
+    mentioning_list = @report.mentions_as_mentioner
+    mention_id_list = report_params[:content].scan(%r{(?<=http://localhost:3000/reports/)\d+})
+    @report.transaction do
+      case control
+      when :create
+        @report.save!
+      when :update
+        @report.update(report_params)
+      end
+      destroy_mentions(mentioning_list)
+      create_mentions(mention_id_list)
+    end
   end
 end
