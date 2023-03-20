@@ -2,7 +2,6 @@
 
 <div id="reports" class="index-items">
   <% @reports.each do |report| %>
-    <% report.content = add_a_tag(report.content) %>
     <div class="index-item">
       <%= render report %>
       <p>

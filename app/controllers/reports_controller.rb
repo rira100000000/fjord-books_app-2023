@@ -4,7 +4,6 @@ require 'uri'
 
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[edit update destroy]
-  helper_method :add_a_tag
 
   def index
     @reports = Report.includes(:user).order(id: :desc).page(params[:page])
@@ -16,7 +15,6 @@ class ReportsController < ApplicationController
     @mention_reports = mention_list.map do |mention|
       Report.find(mention.mention_report_id)
     end
-    @report.content = add_a_tag(@report.content)
   end
 
   # GET /reports/new
@@ -85,14 +83,6 @@ class ReportsController < ApplicationController
 
   def report_params
     params.require(:report).permit(:title, :content)
-  end
-
-  def add_a_tag(content)
-    URI.extract(content, %w[http https]).uniq.each do |url|
-      content.gsub!(url, "<a href='#{url}'>#{url}</a>")
-      content.gsub!("\n", '<br>')
-    end
-    content
   end
 
   def create_mentions(mention_id_list)
