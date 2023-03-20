@@ -1,8 +1,8 @@
 <div class="mentions-container">
-  <strong><%= t('views.common.title_mention', name: Report.model_name.human,mention_name: Mention.model_name.human)%>:</strong><br>
+  <strong><%= t('views.mention.title_mention', name: Report.model_name.human,mention_name: Mention.model_name.human)%>:</strong><br>
 
   <% if @mention_reports.empty? %>
-    <%= t('views.common.no_mentions', name: Mention.model_name.human)%>
+    <%= t('views.mention.no_mentions', name: Mention.model_name.human)%>
   <% else %>
     <div class="mention_list">
       <ul>

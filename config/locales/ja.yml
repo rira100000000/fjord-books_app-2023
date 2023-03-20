@@ -196,9 +196,13 @@ ja:
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
       title_show: "%{name}の詳細"
       sign_out: ログアウト
-      no_mentions: "まだ%{name}されていません"
-      title_mention: "この%{name}への%{mention_name}"
       linked: からリンクされています
+    mention:
+      title_mention: この日報への言及
+      no_mentions: まだ言及されていません
+
+
+
 
 
     pagination:
