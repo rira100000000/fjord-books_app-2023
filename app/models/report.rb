@@ -5,8 +5,8 @@ class Report < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :mentions_as_mentioner, class_name: 'Mention', dependent: :destroy, foreign_key: 'mention_report_id', inverse_of: :mention_report
   has_many :mentions_as_mentioned, class_name: 'Mention', dependent: :destroy, foreign_key: 'mentioned_report_id', inverse_of: :mentioned_report
-  has_many :mention_reports, through: :mentions_as_mentioner
-  has_many :mentioned_reports, through: :mentions_as_mentioned
+  has_many :mentioning_reports, through: :mentions_as_mentioner, source: :mentioned_report
+  has_many :mentioned_reports, through: :mentions_as_mentioned, source: :mention_report
 
   validates :title, presence: true
   validates :content, presence: true
@@ -17,13 +17,5 @@ class Report < ApplicationRecord
 
   def created_on
     created_at.to_date
-  end
-
-  def mentioning_reports
-    Mention.where(mention_report_id: id)
-  end
-
-  def mentioned_reports
-    Mention.where(mentioned_report_id: id)
   end
 end

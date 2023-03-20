@@ -11,10 +11,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
-    mention_list = @report.mentioned_reports
-    @mention_reports = mention_list.map do |mention|
-      Report.find(mention.mention_report_id)
-    end
+    @mention_reports = @report.mentioned_reports
   end
 
   # GET /reports/new
