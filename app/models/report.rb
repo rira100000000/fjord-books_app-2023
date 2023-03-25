@@ -20,23 +20,24 @@ class Report < ApplicationRecord
   end
 
   def save_report_and_mention(report_params)
-    mentioning_list = mentions_as_mentioner
-    mention_id_list = report_params[:content].scan(%r{(?<=http://localhost:3000/reports/)\d+})
     assign_attributes({ title: report_params[:title], content: report_params[:content] })
     transaction do
       save!
-      destroy_mentions(mentioning_list)
-      create_mentions(mention_id_list)
+      destroy_mentions
+      create_mentions
     end
   end
 
-  def create_mentions(mention_id_list)
+  def create_mentions
+    mention_id_list = content.scan(%r{(?<=http://localhost:3000/reports/)\d+})
+
     mention_id_list.uniq.each do |mention_id|
       Mention.create(mention_report: self, mentioned_report: Report.find(mention_id.to_i)) if Report.exists?(id: mention_id.to_i) && mention_id.to_i != id
     end
   end
 
-  def destroy_mentions(mentioning_list)
+  def destroy_mentions
+    mentioning_list = mentions_as_mentioner
     mentioning_list.each(&:destroy)
   end
 end
