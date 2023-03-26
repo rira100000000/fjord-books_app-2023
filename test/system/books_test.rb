@@ -4,8 +4,8 @@ require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
-    @book = books(:one)
-    @user = users(:one)
+    @book = books(:book1)
+    @user = users(:user_taro)
     visit root_path
     fill_in 'Eメール', with: 'user1@example.com'
     fill_in 'パスワード', with: 'password'

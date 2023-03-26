@@ -6,8 +6,8 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    sign_in users(:one)
-    @report = reports(:one)
+    sign_in users(:user_taro)
+    @report = reports(:report1)
   end
 
   test 'should get index' do

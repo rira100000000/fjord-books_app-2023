@@ -4,8 +4,8 @@ require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
-    @report = reports(:one)
-    @user = users(:one)
+    @report = reports(:report1)
+    @user = users(:user_taro)
     visit root_path
     fill_in 'Eメール', with: 'user1@example.com'
     fill_in 'パスワード', with: 'password'

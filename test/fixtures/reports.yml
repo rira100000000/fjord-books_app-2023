@@ -1,12 +1,12 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
+report1:
+  user: user_taro
   title: MyString
   content: MyText
   created_at: <%= Time.zone.local(2023, 3, 18) %>
 
-two:
-  user: two
+report2:
+  user: user_nameless
   title: MyString
   content: MyText
