@@ -23,6 +23,6 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test '日報の作成日をdate型で取得できること' do
-    assert_equal Time.zone.local(2023, 3, 18).to_date, @report.created_on
+    assert_equal Time.zone.today, @report.created_on
   end
 end
