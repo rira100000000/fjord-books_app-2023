@@ -2,10 +2,10 @@
 
 report1:
   user: user_taro
-  title: MyString
-  content: MyText
+  title: 初めての日報
+  content: こんにちは！よろしくね！
 
 report2:
   user: user_nameless
-  title: MyString
-  content: MyText
+  title: 久々の日報
+  content: こんばんは！さようなら！

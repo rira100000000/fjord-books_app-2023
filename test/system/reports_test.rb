@@ -4,8 +4,13 @@ require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
-    @report = reports(:report1)
+    @raise_server_errors = Capybara.raise_server_errors
     login
+  end
+
+  teardown do
+    # 元の値に戻す
+    Capybara.raise_server_errors = @raise_server_errors
   end
 
   test 'visiting the index' do
@@ -17,30 +22,45 @@ class ReportsTest < ApplicationSystemTestCase
     visit reports_url
     click_on '日報の新規作成'
 
-    fill_in 'タイトル', with: @report.content
-    fill_in '内容', with: @report.title
+    fill_in 'タイトル', with: 'テストの学習をしました'
+    fill_in '内容', with: '自動テストは素晴らしいです'
     click_on '登録する'
 
     assert_text '日報が作成されました。'
+    assert_selector 'p', text: 'テストの学習をしました'
+    assert_selector 'p', text: '自動テストは素晴らしいです'
+
     click_on '日報の一覧に戻る'
   end
 
   test 'should update Report' do
-    visit report_url(@report)
+    visit report_url(reports(:report1))
+    assert_selector 'p', text: '初めての日報'
+    assert_selector 'p', text: 'こんにちは！よろしくね！'
+
     click_on 'この日報を編集'
 
-    fill_in 'タイトル', with: @report.title
-    fill_in '内容', with: @report.content
+    fill_in 'タイトル', with: '間違えました'
+    fill_in '内容', with: '10回目の日報でした'
     click_on '更新する'
 
     assert_text '日報が更新されました。'
+    assert_selector 'p', text: '間違えました'
+    assert_selector 'p', text: '10回目の日報でした'
+
     click_on '日報の一覧に戻る'
   end
 
   test 'should destroy Report' do
-    visit report_url(@report)
+    report = reports(:report1)
+    visit report_url(report)
     click_on 'この日報を削除'
 
     assert_text '日報が削除されました'
+
+    Capybara.raise_server_errors = false
+
+    visit report_url(report)
+    assert_text 'ActiveRecord::RecordNotFound'
   end
 end
