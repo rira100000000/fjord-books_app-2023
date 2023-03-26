@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 book1:
-  title: MyString
-  memo: MyText
+  title: テストに関する本
+  memo: ロボットの絵が描かれている
 
 book2:
-  title: MyString
-  memo: MyText
+  title: 楽々ERDレッスン
+  memo: そんなに楽々じゃない
