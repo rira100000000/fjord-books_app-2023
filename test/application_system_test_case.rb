@@ -3,7 +3,5 @@
 require 'test_helper'
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  driven_by :selenium, using: :chrome, screen_size: [1400, 1400] do |options|
-    options.add_argument('--no-sandbox')
-  end
+  driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
 end
