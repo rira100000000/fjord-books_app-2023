@@ -37,7 +37,6 @@ class Report < ApplicationRecord
   end
 
   def destroy_mentions
-    mentioning_list = mentions_as_mentioner
-    mentioning_list.each(&:destroy)
+    mentions_as_mentioner.each(&:destroy)
   end
 end
