@@ -4,13 +4,7 @@ require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
-    @raise_server_errors = Capybara.raise_server_errors
     login
-  end
-
-  teardown do
-    # 元の値に戻す
-    Capybara.raise_server_errors = @raise_server_errors
   end
 
   test 'visiting the index' do
@@ -53,14 +47,14 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'should destroy Report' do
     report = reports(:taro_report)
+    visit reports_url
+    assert_selector 'p', text: '初めての日報'
+
     visit report_url(report)
     click_on 'この日報を削除'
-
     assert_text '日報が削除されました'
 
-    Capybara.raise_server_errors = false
-
-    visit report_url(report)
-    assert_text 'ActiveRecord::RecordNotFound'
+    visit reports_url
+    assert has_no_text?('初めての日報')
   end
 end

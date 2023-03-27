@@ -4,13 +4,7 @@ require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
-    @raise_server_errors = Capybara.raise_server_errors
     login
-  end
-
-  teardown do
-    # 元の値に戻す
-    Capybara.raise_server_errors = @raise_server_errors
   end
 
   test 'visiting the index' do
@@ -51,14 +45,14 @@ class BooksTest < ApplicationSystemTestCase
 
   test 'should destroy Book' do
     book = books(:erd_book)
+    visit books_url
+    assert_selector 'p', text: '楽々ERDレッスン'
+
     visit book_url(book)
     click_on 'この本を削除', match: :first
-
     assert_text '本が削除されました。'
 
-    Capybara.raise_server_errors = false
-
-    visit book_url(book)
-    assert_text 'ActiveRecord::RecordNotFound'
+    visit books_url
+    assert has_no_text?('楽々ERDレッスン')
   end
 end
