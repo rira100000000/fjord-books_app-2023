@@ -21,7 +21,8 @@ class ReportTest < ActiveSupport::TestCase
 
   test '日報の作成日をdate型で取得できること' do
     report = reports(:taro_report)
+    report.created_at = '2023-03-13'.in_time_zone
 
-    assert_equal Time.zone.today, report.created_on
+    assert_equal Date.new(2023, 3, 13), report.created_on
   end
 end
