@@ -7,7 +7,7 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     sign_in users(:user_taro)
-    @report = reports(:report1)
+    @report = reports(:taro_report)
   end
 
   test 'should get index' do

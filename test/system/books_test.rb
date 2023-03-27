@@ -33,7 +33,7 @@ class BooksTest < ApplicationSystemTestCase
   end
 
   test 'should update Book' do
-    visit book_url(books(:book1))
+    visit book_url(books(:testing_book))
     assert_selector 'p', text: 'テストに関する本'
     assert_selector 'p', text: 'ロボットの絵が描かれている'
     click_on 'この本を編集'
@@ -50,7 +50,7 @@ class BooksTest < ApplicationSystemTestCase
   end
 
   test 'should destroy Book' do
-    book = books(:book2)
+    book = books(:erd_book)
     visit book_url(book)
     click_on 'この本を削除', match: :first
 

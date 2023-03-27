@@ -7,7 +7,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     sign_in users(:user_taro)
-    @book = books(:book1)
+    @book = books(:testing_book)
   end
 
   test 'should get index' do

@@ -34,7 +34,7 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test 'should update Report' do
-    visit report_url(reports(:report1))
+    visit report_url(reports(:taro_report))
     assert_selector 'p', text: '初めての日報'
     assert_selector 'p', text: 'こんにちは！よろしくね！'
 
@@ -52,7 +52,7 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test 'should destroy Report' do
-    report = reports(:report1)
+    report = reports(:taro_report)
     visit report_url(report)
     click_on 'この日報を削除'
 

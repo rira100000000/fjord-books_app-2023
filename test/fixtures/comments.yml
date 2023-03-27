@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-comment1:
+taro_comment:
   user: user_taro
-  commentable: report1
+  commentable: taro_report
   commentable_type: Report
-  content: MyString
+  content: こんにちは
 
-comment2:
+nameless_comment:
   user: user_nameless
-  commentable: report1
+  commentable: taro_report
   commentable_type: Report
-  content: MyString
+  content: こんばんは
