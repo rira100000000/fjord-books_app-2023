@@ -20,7 +20,7 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in '内容', with: '自動テストは素晴らしいです'
     click_on '登録する'
 
-    assert_text '日報が作成されました。'
+    assert_selector 'p', text: '日報が作成されました。'
     assert_selector 'p', text: 'テストの学習をしました'
     assert_selector 'p', text: '自動テストは素晴らしいです'
 
@@ -38,7 +38,7 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in '内容', with: '10回目の日報でした'
     click_on '更新する'
 
-    assert_text '日報が更新されました。'
+    assert_selector 'p', text: '日報が更新されました。'
     assert_selector 'p', text: '間違えました'
     assert_selector 'p', text: '10回目の日報でした'
 
@@ -52,7 +52,7 @@ class ReportsTest < ApplicationSystemTestCase
 
     visit report_url(report)
     click_on 'この日報を削除'
-    assert_text '日報が削除されました'
+    assert_selector 'p', text: '日報が削除されました'
 
     visit reports_url
     assert has_no_text?('初めての日報')

@@ -20,7 +20,7 @@ class BooksTest < ApplicationSystemTestCase
     fill_in 'メモ', with: 'オブジェクト指向と開発技術の本質をズバリ解説'
     click_on '登録する'
 
-    assert_text '本が作成されました。'
+    assert_selector 'p', text: '本が作成されました。'
     assert_selector 'p', text: 'オブジェクト指向でなぜつくるのか'
     assert_selector 'p', text: 'オブジェクト指向と開発技術の本質をズバリ解説'
     click_on '本の一覧に戻る'
@@ -36,7 +36,7 @@ class BooksTest < ApplicationSystemTestCase
     fill_in 'メモ', with: 'Webシステムのための自動テスト基礎'
     click_on '更新'
 
-    assert_text '本が更新されました。'
+    assert_selector 'p', text: '本が更新されました。'
     assert_selector 'p', text: '初めての自動テスト'
     assert_selector 'p', text: 'Webシステムのための自動テスト基礎'
 
@@ -50,7 +50,7 @@ class BooksTest < ApplicationSystemTestCase
 
     visit book_url(book)
     click_on 'この本を削除', match: :first
-    assert_text '本が削除されました。'
+    assert_selector 'p', text: '本が削除されました。'
 
     visit books_url
     assert_no_text '楽々ERDレッスン'
