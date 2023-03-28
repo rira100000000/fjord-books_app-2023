@@ -9,13 +9,13 @@ user_taro:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   name: '一人目太郎'
   postal_code: '123-4567'
-  address: '東京'
-  self_introduction: 'ユーザー1です'
+  address: ' 東京都中央区日本橋茅場町1-1-1'
+  self_introduction: '大学生です。美術部に所属し、絵を描くのが得意です。'
 
 user_nameless:
   email: 'user2@example.com'
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   name: ''
-  postal_code: '222-3333'
-  address: '千葉'
-  self_introduction: 'ユーザー2です.'
+  postal_code: '272-3333'
+  address: '千葉県市川市行徳1-2-3-100'
+  self_introduction: '趣味は読書と旅行です。好きな本は「ハリー・ポッター」シリーズです。'
