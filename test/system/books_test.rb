@@ -53,6 +53,6 @@ class BooksTest < ApplicationSystemTestCase
     assert_text '本が削除されました。'
 
     visit books_url
-    assert has_no_text?('楽々ERDレッスン')
+    assert_no_text '楽々ERDレッスン'
   end
 end
