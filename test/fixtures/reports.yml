@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  title: MyString
-  content: MyText
+taro_report:
+  user: user_taro
+  title: 初めての日報
+  content: こんにちは！よろしくね！
 
-two:
-  user: two
-  title: MyString
-  content: MyText
+nameless_report:
+  user: user_nameless
+  title: 久々の日報
+  content: こんばんは！さようなら！
