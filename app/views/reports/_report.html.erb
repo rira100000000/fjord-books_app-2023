@@ -5,8 +5,8 @@
   </p>
 
   <p>
-    <strong><%= Report.human_attribute_name(:content) %>:</strong>
-    <%= format_content report.content %>
+    <strong><%= Report.human_attribute_name(:content) %>:</strong><br>
+    <%= sanitize((add_a_tag(report.content)), tags: %w(a br), attributes: %w(href)) %>
   </p>
 
   <p>

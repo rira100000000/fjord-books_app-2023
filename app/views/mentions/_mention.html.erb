@@ -1,0 +1,15 @@
+<div class="mentions-container">
+  <strong><%= t('views.mention.title_mention', name: Report.model_name.human,mention_name: Mention.model_name.human)%>:</strong><br>
+
+  <% if @mention_reports.empty? %>
+    <%= t('views.mention.no_mentions', name: Mention.model_name.human)%>
+  <% else %>
+    <div class="mention_list">
+      <ul>
+        <% @mention_reports.each do |report| %>
+          <li><%= link_to report.title , report %><%= t('views.common.linked') %>:<%= report.updated_at.to_s(:datetime_jp) %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
