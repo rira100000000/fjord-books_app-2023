@@ -1,0 +1,17 @@
+<h1><%= t('views.common.title_show', name: Report.model_name.human) %></h1>
+<div class="show-item">
+  <%= render @report %>
+  <% if @report.comments.empty? %>
+    <p>コメントはまだありません</p>
+  <% else %>
+    <%= render 'comments/comments', commentable: @report, comments: @report.comments %>
+  <% end %>
+  <%= render 'comments/form', commentable: @report, comment: @comment %>
+</div>
+<div>
+  <%= link_to t('views.common.edit', name: Report.model_name.human), edit_report_path(@report) if report_author?(@report) %>
+  <%= "|" if report_author?(@report) %>
+  <%= link_to t('views.common.back', name: Report.model_name.human), reports_path %>
+
+  <%= button_to t('views.common.destroy', name: Report.model_name.human), @report, method: :delete if report_author?(@report) %>
+</div>

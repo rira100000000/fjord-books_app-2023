@@ -1,0 +1,18 @@
+<br>
+<strong><%= Comment.model_name.human %></strong>
+
+<% commentable.comments.each do |comment| %>
+  <p><% if comment.user_id.nil? %>
+      退会したユーザ:
+    <% else %>
+      <%= User.find(comment.user_id).name.empty? ? User.find(comment.user_id).email : User.find(comment.user_id).name %>:
+    <% end %>
+    <%= comment.updated_at.to_fs(:datetime_jp) %>
+    <br>
+    <%= comment.content %>
+  </p>
+  <% if comment.user_id ==  current_user.id %>
+    <%= link_to t('views.common.edit', name: Comment.model_name.human.downcase), polymorphic_path([:edit, comment.commentable, comment]) %>
+    <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), [comment.commentable, comment], method: :delete %>
+  <% end %>
+<% end %>
